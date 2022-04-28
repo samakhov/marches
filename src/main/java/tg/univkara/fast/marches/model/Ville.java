@@ -1,0 +1,69 @@
+package tg.univkara.fast.marches.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ville")
+public class Ville {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private Long id;
+	
+	@Column(name = "nom")
+	private String nom;
+	
+	@Column(name = "population")
+	private int population;
+	
+	@Column(name = "densite")
+	private int densite;
+
+	public Ville(String nom, int population, int densite) {
+		super();
+		this.nom = nom;
+		this.population = population;
+		this.densite = densite;
+	}
+
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public int getPopulation() {
+		return population;
+	}
+
+	public void setPopulation(int population) {
+		this.population = population;
+	}
+
+	public int getDensite() {
+		return densite;
+	}
+
+	public void setDensite(int densite) {
+		this.densite = densite;
+	}
+	
+	
+}
