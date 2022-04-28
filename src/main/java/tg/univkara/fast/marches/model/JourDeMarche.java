@@ -14,7 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Jour_De_Marche")
+@Table(name = "Jours_De_Marche")
 public class JourDeMarche {
 	
 	@Id
