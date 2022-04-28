@@ -35,10 +35,9 @@ public class JourDeMarche {
 	private FrequenceMarche frequence;
 	
 	@ManyToMany(mappedBy = "jour_de_marche")
-	public Set<Marche> marche = new HashSet<Marche>();
+	public Set<Marche> marches = new HashSet<Marche>();
 
 	public JourDeMarche(String heureDebut, String heureFin, Jour jour, FrequenceMarche frequence) {
-		super();
 		this.heureDebut = heureDebut;
 		this.heureFin = heureFin;
 		this.jour = jour;
@@ -87,5 +86,11 @@ public class JourDeMarche {
 		this.frequence = frequence;
 	}
 	
+	public Set<Marche> getMarches() {
+		return marches;
+	}
 	
+	public void setMarches(Set<Marche> marches) {
+		this.marches = marches;
+	}
 }

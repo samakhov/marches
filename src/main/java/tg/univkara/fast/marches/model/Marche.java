@@ -21,47 +21,47 @@ import javax.persistence.Table;
 public class Marche {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	public int Id;
+	private Long id;
 	
 	@Column(name = "Nom")
-	public String Nom;
+	private String Nom;
 	
 	@Column(name = "emplacement")
-	public String emplacement;
+	private String emplacement;
 	
 	@Column(name = "superficie")
-	public String superficie;
+	private float superficie;
 	
 	@Column(name = "heure_ouverture")
-	public String heure_ouverture;
+	private String heure_ouverture;
 	
 	@Column(name = "heure_fermeture")
-	public String heure_fermeture;
+	private String heure_fermeture;
 	
 	@ManyToOne
-	@JoinColumn(name = "id")
-	public Ville ville;
+	@JoinColumn(name = "ville_id", referencedColumnName = "id")
+	private Ville ville;
 	
 	@ManyToMany
 	@JoinTable(
 			  name = "marche_jour_marche", 
 			  joinColumns = @JoinColumn(name = "id_marche"), 
 			  inverseJoinColumns = @JoinColumn(name = "id_jour_de_marche"))
-	public Set<JourDeMarche> jour_de_marche;
+	private Set<JourDeMarche> jour_de_marche;
 	 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "marche")
-	public List<Vente_Produit> vente_produit;
+	private List<Vente_Produit> vente_produit;
 	
 	
 	
-	public int getId() {
-		return Id;
+	public Long getId() {
+		return id;
 	}
 
-	public void setId(int id) {
-		Id = id;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNom() {
@@ -80,11 +80,11 @@ public class Marche {
 		this.emplacement = emplacement;
 	}
 
-	public String getSuperficie() {
+	public float getSuperficie() {
 		return superficie;
 	}
 
-	public void setSuperficie(String superficie) {
+	public void setSuperficie(float superficie) {
 		this.superficie = superficie;
 	}
 
@@ -112,11 +112,11 @@ public class Marche {
 		this.ville = ville;
 	}
 
-	public Set<Jour_De_Marche> getJour_de_marche() {
+	public Set<JourDeMarche> getJour_de_marche() {
 		return jour_de_marche;
 	}
 
-	public void setJour_de_marche(Set<Jour_De_Marche> jour_de_marche) {
+	public void setJour_de_marche(Set<JourDeMarche> jour_de_marche) {
 		this.jour_de_marche = jour_de_marche;
 	}
 

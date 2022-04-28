@@ -15,37 +15,34 @@ import javax.persistence.Table;
 public class Vente_Produit {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	public int Id;
+	private Long id;
 	
 	@Column(name = "prix_unitaire")
-	public int prix_unitaire;
-	
-	@Column(name = "origine")
-	public String origine;
+	private int prix_unitaire;
 	
 	@Column(name = "quantite")
-	public int quantite;
+	private int quantite;
 	
 	@ManyToOne
 	@JoinColumn(name = "ville_id", referencedColumnName = "id")
-	public Ville ville;
+	private Ville ville;
 	
 	@ManyToOne
-	@JoinColumn(name = "ville_id", referencedColumnName = "id")
-	public Marche marche;
+	@JoinColumn(name = "marche_id", referencedColumnName = "id")
+	private Marche marche;
 	
 	@ManyToOne
 	@JoinColumn(name = "produit_id", referencedColumnName = "id")
-	public Produit produit;
+	private Produit produit;
 
-	public int getId() {
-		return Id;
+	public Long getId() {
+		return id;
 	}
 
-	public void setId(int id) {
-		Id = id;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public int getPrix_unitaire() {
@@ -54,14 +51,6 @@ public class Vente_Produit {
 
 	public void setPrix_unitaire(int prix_unitaire) {
 		this.prix_unitaire = prix_unitaire;
-	}
-
-	public String getOrigine() {
-		return origine;
-	}
-
-	public void setOrigine(String origine) {
-		this.origine = origine;
 	}
 
 	public int getQuantite() {

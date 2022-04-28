@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.Id;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,25 +18,25 @@ import javax.persistence.Table;
 public class Produit {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	public int Id;
+	private Long id;
 	
 	@Column(name = "nom")
-	public String nom;
+	private String nom;
 	
-	@Column(name = "type")
-	public TypeProduit type;
+	@Enumerated(EnumType.STRING)
+	private TypeProduit type;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "produit")
-	public List<Vente_Produit> vente_produit;
+	private List<Vente_Produit> ventes;
 
-	public int getId() {
-		return Id;
+	public Long getId() {
+		return id;
 	}
 
-	public void setId(int id) {
-		Id = id;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNom() {
@@ -53,12 +55,17 @@ public class Produit {
 		this.type = type;
 	}
 
-	public List<Vente_Produit> getVente_produit() {
-		return vente_produit;
+	public List<Vente_Produit> getVentes() {
+		return ventes;
 	}
 
-	public void setVente_produit(List<Vente_Produit> vente_produit) {
-		this.vente_produit = vente_produit;
+	public void setVentes(List<Vente_Produit> ventes) {
+		this.ventes = ventes;
+	}
+	
+	public List<Vente_Produit> addVente(Vente_Produit vente) {
+		this.ventes.add(vente);
+		return this.ventes;
 	}
 	
 	
