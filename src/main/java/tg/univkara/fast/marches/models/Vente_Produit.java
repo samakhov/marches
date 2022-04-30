@@ -1,4 +1,4 @@
-package tg.univkara.fast.marches.model;
+package tg.univkara.fast.marches.models;
 
 import javax.persistence.Id;
 import javax.persistence.Column;
