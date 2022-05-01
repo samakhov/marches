@@ -1,5 +1,6 @@
 package tg.univkara.fast.marches.models;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -16,6 +17,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "marches")
 public class Marche {
@@ -49,10 +53,10 @@ public class Marche {
 			  name = "marche_jour_marche", 
 			  joinColumns = @JoinColumn(name = "id_marche"), 
 			  inverseJoinColumns = @JoinColumn(name = "id_jour_de_marche"))
-	private Set<JourDeMarche> jour_de_marche;
+	private List<JourDeMarche> jour_de_marche = new ArrayList<JourDeMarche>();
 	 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "marche")
-	private List<Vente_Produit> vente_produit;
+	private List<Vente_Produit> vente_produit = new ArrayList<Vente_Produit>();
 	
 	
 	
@@ -112,11 +116,11 @@ public class Marche {
 		this.ville = ville;
 	}
 
-	public Set<JourDeMarche> getJour_de_marche() {
+	public List<JourDeMarche> getJour_de_marche() {
 		return jour_de_marche;
 	}
 
-	public void setJour_de_marche(Set<JourDeMarche> jour_de_marche) {
+	public void setJour_de_marche(List<JourDeMarche> jour_de_marche) {
 		this.jour_de_marche = jour_de_marche;
 	}
 
